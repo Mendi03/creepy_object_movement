@@ -91,5 +91,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.643216, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Player/Neck"]
 
+[node name="RayCast3D" type="RayCast3D" parent="Player/Neck/Camera3D"]
+
 [node name="Can" parent="." instance=ExtResource("2_sjk57")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.846, 1.21475, -6.406)
