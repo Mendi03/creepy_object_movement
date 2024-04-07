@@ -92,6 +92,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.643216, 0)
 [node name="Camera3D" type="Camera3D" parent="Player/Neck"]
 
 [node name="RayCast3D" type="RayCast3D" parent="Player/Neck/Camera3D"]
+transform = Transform3D(-0.804624, -0.0115223, 0.593673, 0.314598, 0.839679, 0.442681, -0.503596, 0.54296, -0.672001, 0, 0, 0)
+target_position = Vector3(0, -1, 7)
+
+[node name="RayCast3D2" type="RayCast3D" parent="Player/Neck/Camera3D"]
+transform = Transform3D(-0.679568, 0.52484, -0.512573, 0.314598, 0.839679, 0.442681, 0.662734, 0.139578, -0.735733, 0, 0, 0)
+target_position = Vector3(0, -1, 7)
+
+[node name="RayCast3D3" type="RayCast3D" parent="Player/Neck/Camera3D"]
+transform = Transform3D(-0.679568, 0.52484, -0.512573, 0.70048, 0.671823, -0.240794, 0.21798, -0.522683, -0.824189, 0, 0, 0)
+target_position = Vector3(0, -1, 7)
+
+[node name="RayCast3D4" type="RayCast3D" parent="Player/Neck/Camera3D"]
+transform = Transform3D(-0.37649, 0.634495, 0.675035, 0.70048, 0.671823, -0.240794, -0.606287, 0.382192, -0.697385, 0, 0, 0)
+target_position = Vector3(0, -1, 7)
 
 [node name="Can" parent="." instance=ExtResource("2_sjk57")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.846, 1.21475, -6.406)
