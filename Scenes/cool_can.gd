@@ -22,9 +22,9 @@ func _physics_process(_delta):
 	if is_looked_at:
 		return
 		
-	var teleportTarget = Vector3(0, 1.215, 6)
-	var teleportTarget2 = Vector3(6.846, 1.215, -6.406)
-	var teleportTarget3 = Vector3(-7.36, 1.215, -6.406)
+	var teleportTarget = Vector3(0, 1, 6)
+	var teleportTarget2 = Vector3(6.846, 1, -6.406)
+	var teleportTarget3 = Vector3(-7.36, 1, -6.406)
 
 	var positions = [teleportTarget, teleportTarget2, teleportTarget3]
 
@@ -40,6 +40,8 @@ func _is_viewed() -> bool:
 	if not viewed:
 		return viewed
 	
+	return viewed
+	'''
 	var colliding_rays = 0
 	
 	# make raycasts point to player position and count how many are colliding with an obstacle
@@ -54,3 +56,4 @@ func _is_viewed() -> bool:
 		viewed = false
 	
 	return viewed
+'''
