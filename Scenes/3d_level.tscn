@@ -1,8 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://rftmegtqj63f"]
 
 [ext_resource type="PackedScene" uid="uid://c6ojsv46jcn14" path="res://Scenes/player.tscn" id="1_ydf77"]
-[ext_resource type="PackedScene" uid="uid://cf7a5nuj3eqmc" path="res://Scenes/can.tscn" id="2_pox2i"]
-[ext_resource type="Script" path="res://Scripts/can.gd" id="3_1362j"]
+[ext_resource type="PackedScene" uid="uid://n2j06vy78pi8" path="res://Scenes/cool_can.tscn" id="2_lp1tl"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j6h72"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -27,6 +26,8 @@ data = PackedVector3Array(10, 0, 10, -10, 0, 10, 10, 0, -10, -10, 0, 10, -10, 0,
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_u6086"]
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_tc0dg"]
 
 [node name="3d_level" type="Node3D"]
 
@@ -74,10 +75,9 @@ shape = SubResource("ConcavePolygonShape3D_u6086")
 
 [node name="Player" parent="." instance=ExtResource("1_ydf77")]
 
-[node name="Can" parent="." instance=ExtResource("2_pox2i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.846, 1.21475, -6.406)
-script = ExtResource("3_1362j")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 6, 0, 0, 0, 6, 0, 3, -5.863)
+mesh = SubResource("BoxMesh_tc0dg")
 
-[node name="VisibleOnScreenNotifier3D2" type="VisibleOnScreenNotifier3D" parent="Can"]
-
-[connection signal="screen_exited" from="Can/VisibleOnScreenNotifier3D2" to="Can" method="_on_visible_on_screen_notifier_3d_2_screen_exited"]
+[node name="coolCan" parent="." instance=ExtResource("2_lp1tl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.846, 1, -6.406)
