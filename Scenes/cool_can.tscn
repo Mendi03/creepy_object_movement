@@ -22,6 +22,12 @@ shape = SubResource("ConvexPolygonShape3D_u87us")
 transform = Transform3D(0.201, 0, 0, 0, 0.201, 0, 0, 0, 0.201, 0, 0.2, 0)
 aabb = AABB(-0.499157, -1, -0.500163, 0.998313, 2, 1.00033)
 
+[node name="VisibleOnScreenEnabler3D" type="VisibleOnScreenEnabler3D" parent="."]
+transform = Transform3D(0.201, 0, 0, 0, 0.201, 0, 0, 0, 0.201, 0, 0.2, 0)
+visible = false
+aabb = AABB(-0.508128, -1.00007, -0.50732, 1.01626, 2.00014, 1.01464)
+enable_node_path = NodePath("../VisibleOnScreenNotifier3D")
+
 [node name="OcclusionCheckRaysParent" type="Node3D" parent="."]
 
 [node name="RayCast3D" type="RayCast3D" parent="OcclusionCheckRaysParent"]

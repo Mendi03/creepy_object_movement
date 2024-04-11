@@ -91,3 +91,12 @@ shape = SubResource("ConcavePolygonShape3D_aae5u")
 
 [node name="coolCan" parent="." instance=ExtResource("2_lp1tl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.8, 1, -6.4)
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 1, 6)
+
+[node name="VisibleOnScreenNotifier3D2" type="VisibleOnScreenNotifier3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 6.8, 1, -6.4)
+
+[node name="VisibleOnScreenNotifier3D3" type="VisibleOnScreenNotifier3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -7.3, 1, -6.4)

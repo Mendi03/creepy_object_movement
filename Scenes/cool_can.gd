@@ -33,6 +33,10 @@ func _physics_process(_delta):
 	elif behind_obstacle and on_screen:
 		_move_can()
 		return
+	elif on_screen:
+		if not behind_obstacle and on_screen:
+			has_teleported = false
+			return
 	else:
 		return
 
@@ -65,7 +69,7 @@ func _move_can():
 
 		global_position = positions.pick_random()
 		has_teleported = true
-		return
+	return
 
 func _ready_to_move() -> bool:
 	var on_screen = vis.is_on_screen()
