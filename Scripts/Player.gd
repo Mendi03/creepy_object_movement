@@ -44,3 +44,5 @@ func _input(event):
 		cam.rotation_degrees.x = clamp(cam.rotation_degrees.x, -90, 90)
 	elif event.is_action_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	
+		
