@@ -3,19 +3,15 @@ extends CharacterBody3D
 const OCC_RAY_TARGET_Y_OFFSET = 0.5
 
 var _occlusion_check_rays : Array[RayCast3D]
-var is_looked_at = true
-var can_moved = false
-var has_collided = false
 var previous_position : Vector3
 var ready_to_move = false
+var has_teleported : bool
 
 @onready var target_player = $"../Player"
-
 @onready var vis = $VisibleOnScreenNotifier3D
 @onready var Occlusion_Check_Rays_Parent = $OcclusionCheckRaysParent
 
-func _ready():
-	
+func _ready():	
 	if not target_player:
 		printerr(self.name + " has no player target")
 		set_physics_process(false)
@@ -27,21 +23,18 @@ func _ready():
 			r.add_exception(target_player) 
 			_occlusion_check_rays.append(r)
 	
-	#previous_position = global_position
-	
-	
 func _physics_process(_delta):
 	var on_screen = vis.is_on_screen()
 	var behind_obstacle = _ray_colliding()
 	
-	if on_screen and behind_obstacle:
+	if not on_screen:
 		_move_can()
-	elif not on_screen and behind_obstacle:
 		return
-	elif not behind_obstacle and on_screen:
-		return
-	elif (not on_screen) and (not behind_obstacle):
+	elif behind_obstacle and on_screen:
 		_move_can()
+		return
+	else:
+		return
 
 func _ray_colliding() -> bool:
 	var colliding_rays = 0
@@ -63,11 +56,25 @@ func _ray_colliding() -> bool:
 	
 	
 func _move_can():
-	var coord = Vector3(0, 1, 6)
-	var coord2 = Vector3(6.846, 1, -6.406)
-	var coord3 = Vector3(-7.36, 1, -6.406)
-	var positions = [coord, coord2, coord3]
+	
+	if has_teleported == false:
+		var coord = Vector3(0, 1, 6)
+		var coord2 = Vector3(6.8, 1, -6.4)
+		var coord3 = Vector3(-7.3, 1, -6.4)
+		var positions = [coord, coord2, coord3]
 
-	global_position = positions.pick_random()
-	return
+		global_position = positions.pick_random()
+		has_teleported = true
+		return
 
+func _ready_to_move() -> bool:
+	var on_screen = vis.is_on_screen()
+	var behind_obstacle = _ray_colliding()
+	
+	
+	if on_screen and (not behind_obstacle):
+		return true
+	elif behind_obstacle and (not on_screen):
+		return true
+	else:
+		return false
