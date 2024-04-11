@@ -74,6 +74,7 @@ mesh = SubResource("BoxMesh_mi24y")
 shape = SubResource("ConcavePolygonShape3D_u6086")
 
 [node name="Player" parent="." instance=ExtResource("1_ydf77")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 6, 0, 0, 0, 6, 0, 3, -5.863)

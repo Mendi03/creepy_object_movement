@@ -13,6 +13,7 @@ var is_looked_at = true
 func _ready():
 	for r in Occlusion_Check_Rays_Parent.get_children():
 		if r is RayCast3D:
+			#r.add_exception(target_player) 
 			_occlusion_check_rays.append(r)
 	
 	
@@ -40,7 +41,6 @@ func _is_viewed() -> bool:
 	if not viewed:
 		return viewed
 	
-	return viewed
 	'''
 	var colliding_rays = 0
 	
@@ -54,6 +54,6 @@ func _is_viewed() -> bool:
 	# if all raycasts are colliding, the statue is hidden by an obstacle
 	if colliding_rays >= _occlusion_check_rays.size():
 		viewed = false
-	
+	'''
 	return viewed
-'''
+
