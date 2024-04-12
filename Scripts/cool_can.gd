@@ -3,15 +3,14 @@ extends CharacterBody3D
 const OCC_RAY_TARGET_Y_OFFSET = 0.5
 
 var _occlusion_check_rays : Array[RayCast3D]
-var previous_position : Vector3
-var ready_to_move = false
 var has_teleported : bool
 
 @onready var target_player = $"../Player"
 @onready var vis = $VisibleOnScreenNotifier3D
 @onready var Occlusion_Check_Rays_Parent = $OcclusionCheckRaysParent
 
-func _ready():	
+func _ready():
+	#test if target_player is correctly assigned
 	if not target_player:
 		printerr(self.name + " has no player target")
 		set_physics_process(false)
@@ -27,12 +26,15 @@ func _physics_process(_delta):
 	var on_screen = vis.is_on_screen()
 	var behind_obstacle = _ray_colliding()
 	
+	# main logic to move can then make it stop moving
 	if not on_screen:
 		_move_can()
 		return
 	elif behind_obstacle and on_screen:
 		_move_can()
 		return
+
+	# when looking at can again, will move again when not looking
 	elif on_screen:
 		if not behind_obstacle and on_screen:
 			has_teleported = false
@@ -50,6 +52,7 @@ func _ray_colliding() -> bool:
 		r.target_position.y += OCC_RAY_TARGET_Y_OFFSET
 		if r.is_colliding():
 			colliding_rays += 1
+
 	# if all raycasts are colliding, the can is hidden by an obstacle
 	if colliding_rays >= _occlusion_check_rays.size():
 		behind_obst = true
@@ -58,9 +61,8 @@ func _ray_colliding() -> bool:
 	behind_obst = false
 	return behind_obst
 	
-	
 func _move_can():
-	
+	# has_teleported variable stops the can from teleporting infinitely when out of screen
 	if has_teleported == false:
 		var coord = Vector3(0, 1, 6)
 		var coord2 = Vector3(6.8, 1, -6.4)
@@ -70,15 +72,3 @@ func _move_can():
 		global_position = positions.pick_random()
 		has_teleported = true
 	return
-
-func _ready_to_move() -> bool:
-	var on_screen = vis.is_on_screen()
-	var behind_obstacle = _ray_colliding()
-	
-	
-	if on_screen and (not behind_obstacle):
-		return true
-	elif behind_obstacle and (not on_screen):
-		return true
-	else:
-		return false
