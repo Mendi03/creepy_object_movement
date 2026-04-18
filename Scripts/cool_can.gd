@@ -68,6 +68,11 @@ func _move_can():
 		var coord2 = Vector3(6.8, 1, -6.4)
 		var coord3 = Vector3(-7.3, 1, -6.4)
 		var positions = [coord, coord2, coord3]
+		
+		#var position_id = [1,2,3]
+		#
+	#match global_position:
+		
 
 		global_position = positions.pick_random()
 		has_teleported = true
